@@ -3,6 +3,7 @@ package models
 import "time"
 
 type Userinput struct {
+	Id        string `json:"id" binding:"required"`
 	Nama      string `json:"nama" binding:"required"`
 	Username  string `json:"username" binding:"required"`
 	Email     string `json:"email" binding:"required,email"`
@@ -15,6 +16,7 @@ type Userinput struct {
 }
 
 type User struct {
+	Id        string
 	Nama      string
 	Username  string
 	Email     string
