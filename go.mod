@@ -1,4 +1,4 @@
-module github.com/Holilamd/golang_crud-pgx
+module github.com/Holilamd/module-pemeliharaan
 
 go 1.17
 
