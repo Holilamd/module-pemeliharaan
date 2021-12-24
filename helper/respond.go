@@ -1,5 +1,7 @@
 package helper
 
+import "github.com/go-playground/validator/v10"
+
 type Response struct {
 	Message interface{} `json:"message"`
 	Code    interface{} `json:"status_code"`
@@ -7,7 +9,7 @@ type Response struct {
 	Data    interface{} `json:"data"`
 }
 
-func ResponseSuccess(message string, code int, data interface{}) Response {
+func Success(message string, code int, data interface{}) Response {
 	jsonResponse := Response{
 		Message: message,
 		Code:    code,
@@ -17,7 +19,7 @@ func ResponseSuccess(message string, code int, data interface{}) Response {
 	return jsonResponse
 }
 
-func ResponseError(message string, code int, data interface{}) Response {
+func Error(message string, code int, data interface{}) Response {
 	jsonResponse := Response{
 		Message: message,
 		Code:    code,
@@ -26,4 +28,14 @@ func ResponseError(message string, code int, data interface{}) Response {
 	}
 	return jsonResponse
 
+}
+
+func FormatValidationError(err error) []string {
+	var errors []string
+
+	for _, e := range err.(validator.ValidationErrors) {
+		errors = append(errors, e.Error())
+	}
+
+	return errors
 }

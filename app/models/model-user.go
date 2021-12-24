@@ -3,7 +3,7 @@ package models
 import "time"
 
 type Userinput struct {
-	Id        string `json:"id" binding:"required"`
+	Id        string `json:"id" `
 	Nama      string `json:"nama" binding:"required"`
 	Username  string `json:"username" binding:"required"`
 	Email     string `json:"email" binding:"required,email"`
@@ -21,6 +21,7 @@ type User struct {
 	Username  string
 	Email     string
 	Status    bool
+	Password  string
 	Locked    bool
 	Csalahpwd int
 	CreatedBy string
